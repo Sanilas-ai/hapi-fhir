@@ -59,7 +59,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	}
 
 	/**
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 * @return Returns {@literal null} if no match
 	 */
 	RuntimeSearchParam getActiveSearchParam(
@@ -68,7 +68,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 			@Nonnull SearchParamLookupContextEnum theContext);
 
 	/**
-	 * @deprecated Use {@link #getActiveSearchParam(String, String, SearchParamLookupContextEnum)}
+	 * @deprecated Use {@link #getActiveSearchParams(String, SearchParamLookupContextEnum)}
 	 */
 	@Deprecated(since = "8.0.0", forRemoval = true)
 	default ResourceSearchParams getActiveSearchParams(String theResourceName) {
@@ -76,7 +76,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	}
 
 	/**
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 * @return Returns all active search params for the given resource
 	 */
 	ResourceSearchParams getActiveSearchParams(
@@ -91,7 +91,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	default void setPhoneticEncoder(IPhoneticEncoder thePhoneticEncoder) {}
 
 	/**
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 */
 	default List<RuntimeSearchParam> getActiveComboSearchParams(
 			@Nonnull String theResourceName, @Nonnull SearchParamLookupContextEnum theContext) {
@@ -113,7 +113,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	}
 
 	/**
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 */
 	default List<RuntimeSearchParam> getActiveComboSearchParams(
 			@Nonnull String theResourceName,
@@ -127,7 +127,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	 * creating error messages for users as opposed to actual search processing. It will include meta parameters
 	 * such as <code>_id</code> and <code>_lastUpdated</code>.
 	 *
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 */
 	default Collection<String> getValidSearchParameterNamesIncludingMeta(
 			@Nonnull String theResourceName, @Nonnull SearchParamLookupContextEnum theContext) {
@@ -149,7 +149,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	/**
 	 * Fetch a SearchParameter by URL
 	 *
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 * @return Returns <code>null</code> if it can't be found
 	 */
 	@Nullable
@@ -161,7 +161,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	 *
 	 * @param theResourceType the resource type.
 	 * @param theParamName the search parameter name.
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 * @return the {@link RuntimeSearchParam} that is found.
 	 */
 	default RuntimeSearchParam getRuntimeSearchParam(
@@ -182,7 +182,7 @@ public interface ISearchParamRegistry extends IResourceRepositoryCache {
 	/**
 	 * Get all the search params for a resource. First, check the resource itself, then check the top-level `Resource` resource and combine the two.
 	 *
-	 * @param theContext The context to return active search params for, or {@literal null} to return any active search params
+	 * @param theContext The context to return active search params for. Use {@link SearchParamLookupContextEnum#ALL} to return any active search params
 	 * @param theResourceType the resource type.
 	 * @return the {@link ResourceSearchParams} that has all the search params.
 	 */
